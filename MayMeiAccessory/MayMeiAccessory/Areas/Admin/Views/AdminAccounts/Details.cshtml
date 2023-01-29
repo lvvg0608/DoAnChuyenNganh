@@ -1,0 +1,65 @@
+﻿@model MayMeiAccessory.Models.Account
+
+@{
+    ViewData["Title"] = "Thông tin tài khoản quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index" class="breadcrumb-item">Danh sách tài khoản quản trị</a>
+            <span class="breadcrumb-item active">Thông tin tài khoản quản trị</span>
+        </nav>
+    </div>
+</div>
+
+<div class="card-body">
+    <h4 class="card-title">Thông tin tài khoản quản trị</h4>
+    <div class="table-responsive">
+        <table class="product-info-table m-t-20">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td class="text-dark font-weight-semibold">@Model.AccountId</td>
+                </tr>
+                <tr>
+                    <td>Họ và tên:</td>
+                    <td>@Model.FullName</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>@Model.Phone</td>
+                </tr>
+                <tr>
+                    <td>Trạng thái:</td>
+                    <td>
+                        @if (Model.Active)
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" checked="" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" disabled />
+                                <label for="switch-1"></label>
+                            </div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lần đăng nhập cuối:</td>
+                    <td>@Model.LastLogin</td>
+                </tr>
+                <tr>
+                    <td>Ngày tạo :</td>
+                    <td>@Model.CreateDate</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

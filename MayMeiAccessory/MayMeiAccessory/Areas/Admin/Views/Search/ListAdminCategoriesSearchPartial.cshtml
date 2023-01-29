@@ -1,0 +1,42 @@
+﻿@model List<Category>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        string url = $"/{item.Alias}";
+        <tr>
+            <td>@item.CatId</td>
+            <td>
+                <a target="_blank" href="@url">@item.CatName</a>
+            </td>
+            <td>@item.Ordering</td>
+            <td>
+                @if (item.Published == true)
+                {
+
+
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-success badge-dot m-r-10"></div>
+                        <div>Public</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-success badge-dot m-r-10"></div>
+                        <div>Non-Public</div>
+                    </div>
+                }
+
+
+            </td>
+
+            <td>
+                <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Details" asp-route-id="@item.CatId">Chi tiết</a>
+                <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@item.CatId">Sửa</a>
+                <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@item.CatId">Xóa</a>
+            </td>
+        </tr>
+    }
+}

@@ -1,0 +1,83 @@
+﻿@model MayMeiAccessory.Models.Customer
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a asp-area="Admin" asp-controller="AdminCategories" asp-action="Index" class="breadcrumb-item">Danh sách khách hàng</a>
+            <span class="breadcrumb-item active">Khách hàng : @Model.FullName</span>
+        </nav>
+    </div>
+</div>
+
+<div class="page-header no-gutters has-tab">
+    <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+        <div class="media align-items-center m-b-15">
+            <div class="avatar avatar-image rounded" style="height:70px; width:70px">
+                <img src="~/images/category/@Model.Avatar" alt="@Model.FullName" />
+            </div>
+            <div class="m-l-15">
+                <h4 class="m-b-0">@Model.FullName</h4>
+                <p class="text-muted m-b-0">ID: #@Model.CustomerId</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <h4 class="card-title">Thông tin khách hàng : @Model.FullName</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.CustomerId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên khách hàng:</td>
+                        <td>@Model.FullName</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>@Model.Phone</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <td>Trạng thái:</td>
+                        <td>
+                            @if (Model.Active)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="" disabled />
+                                    <label for="switch-1"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" disabled />
+                                    <label for="switch-1"></label>
+                                </div>
+                            }
+                        </td>
+                    </tr>                   
+
+                </tbody>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="CustomerId" />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>
+
+

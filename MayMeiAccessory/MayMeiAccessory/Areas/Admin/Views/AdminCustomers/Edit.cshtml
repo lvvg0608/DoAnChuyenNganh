@@ -1,0 +1,94 @@
+﻿@model MayMeiAccessory.Models.Customer
+
+@{
+    ViewData["Title"] = "Chỉnh sửa thông tin khách hàng :" + Model.FullName;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section Styles{
+    <link href="~/Adminassets/summernote/summernote-bs4.css" rel="stylesheet" />
+    <link href="~/Adminassets/summernote/summernote.css" rel="stylesheet" />
+}
+
+    <form asp-controller="AdminCustomers" asp-action="Edit" asp-route-id="@Model.CustomerId" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CustomerId" />
+        <input type="hidden" asp-for="Avatar" />
+        <input type="hidden" asp-for="CreateDate" />
+        <input type="hidden" asp-for="Password" />
+        <input type="hidden" asp-for="Salt" />
+        <div class="page-header no-gutters has-tab">
+            <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                <div class="m-b-15">
+                    <button class="btn btn-primary">
+                        <i class="anticon anticon-save"></i>
+                        <span>Save</span>
+                    </button>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin cơ bản</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content m-t-15">
+            <div class="tab-pane fade show active" id="product-edit-basic">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="font-weight-semibold" for="productName">Tên khách hàng</label>
+                            <input type="text" class="form-control" asp-for="FullName">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-semibold" for="productPrice">Email</label>
+                                <input type="text" class="form-control" asp-for="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-semibold" for="productPrice">Địa chỉ</label>
+                                <input type="text" class="form-control" asp-for="Address">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-semibold" for="productPrice">Số điện thoại</label>
+                                <input type="text" class="form-control" asp-for="Phone">
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="m-t-25">
+                                <div class="form-group d-flex align-items-center">
+                                    <div class="switch m-r-10">
+                                        <input type="checkbox" asp-for="Active">
+                                        <label for="Active"></label>
+                                    </div>
+                                    <label>Public</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @section Scripts{
+    <script src="~/Adminassets/vendors/select2/select2.min.js"></script>
+    <script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="~/Adminassets/summernote/summernote-bs4.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            $('.summernote').summernote({
+                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+                styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5'],
+                height: 200,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        });</script>
+}

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\thebe\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\thebe\\.nuget\\packages"
+    ]
+  }
+}
